@@ -5,7 +5,7 @@ pipeline {
     disableConcurrentBuilds()   // avoid port/name clashes
   }
   environment {
-    APP_NAME = 'sample-app'
+    APP_NAME = 'samplerunning'
     PORT     = '5050'
     HOST_IP  = '192.168.56.20'          // VM private IP
     IMAGE    = "${APP_NAME}:latest"
