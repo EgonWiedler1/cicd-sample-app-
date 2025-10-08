@@ -9,7 +9,7 @@ pipeline {
     PORT     = '5050'
     HOST_IP  = '192.168.56.20'          // VM private IP
     IMAGE    = "${APP_NAME}:latest"
-    URL      = "http://${HOST_IP}:${PORT}/"
+    APP_URL      = "http://${HOST_IP}:${PORT}/"
   }
   stages {
     stage('Checkout') {
@@ -45,7 +45,7 @@ pipeline {
           set -eux
           # wait until the app responds
           for i in $(seq 1 60); do
-            if curl -fsS "$URL" -o /tmp/resp.txt; then
+            if curl -fsS "$APP_URL" -o /tmp/resp.txt; then
               cat /tmp/resp.txt
               # Accept any valid caller IP to avoid hardcoding
               grep -Eq 'You are calling me from ([0-9]{1,3}\\.){3}[0-9]{1,3}' /tmp/resp.txt
